@@ -4,7 +4,8 @@ phonebook = \
     {
         'Elvira': '8891',
         'Milla Jovovich': '9919',
-        'Artur Pirozkov': '7761'
+        'Artur Pirozkov': '7761',
+        'Voyager': '0000'
     }
 
 while True:
