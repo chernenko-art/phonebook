@@ -1,12 +1,15 @@
 from functions import *
+import pickle
+import os
 
-phonebook = \
-    {
-        'Elvira': '8891',
-        'Milla Jovovich': '9919',
-        'Artur Pirozkov': '7761',
-        'Voyager': '0000'
-    }
+
+# check exist file phonebook.pickle
+check_file = os.path.exists('phonebook.pickle')
+if check_file is True:
+    with open('phonebook.pickle', 'rb') as phonebook_from_file:  # load phonebook from file
+        phonebook = pickle.load(phonebook_from_file)
+else:
+    phonebook = {}
 
 while True:
     # start message for user (choice command for phonebook)
@@ -22,8 +25,7 @@ while True:
                 0. Exit
         ''')
 
-    # enter user command
-    user_kod = input('Your choice?: ')
+    user_kod = input('Your choice?: ')  # enter user command
 
     # execution for user command
     if user_kod == '1':
@@ -37,5 +39,7 @@ while True:
     elif user_kod == '5':
         print_phonebook(phonebook)
     else:
+        with open('phonebook.pickle', 'wb') as phonebook_from_file:
+            pickle.dump(phonebook, phonebook_from_file)
         print('By, my darling')
         break
