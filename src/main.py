@@ -1,15 +1,6 @@
 from functions import *
-import pickle
-import os
 
-
-# check exist file phonebook.pickle
-check_file = os.path.exists('phonebook.pickle')
-if check_file is True:
-    with open('phonebook.pickle', 'rb') as phonebook_from_file:  # load phonebook from file
-        phonebook = pickle.load(phonebook_from_file)
-else:
-    phonebook = {}
+phonebook = read_file()  # check the file phonebook.txt or create new dict
 
 while True:
     # start message for user (choice command for phonebook)
@@ -39,7 +30,6 @@ while True:
     elif user_kod == '5':
         print_phonebook(phonebook)
     else:
-        with open('phonebook.pickle', 'wb') as phonebook_from_file:
-            pickle.dump(phonebook, phonebook_from_file)
+        write_file(phonebook)
         print('By, my darling')
         break
