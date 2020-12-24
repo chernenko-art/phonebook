@@ -1,0 +1,17 @@
+{
+    "python.pythonPath": "C:\\Users\\Art_Studio\\AppData\\Local\\Programs\\Python\\Python38\\python.exe",
+    "cSpell.dictionaryDefinitions": [
+    
+    ],
+    "cSpell.language": "en, ru",
+    "[python]": {
+
+        "gitlens.codeLens.symbolScopes": [
+            "!Module"
+        ],
+        "editor.wordBasedSuggestions": false
+    },
+    "python.analysis.extraPaths": [
+        "C:\\Users\\Art_Studio\\Python_Projects\\phonebook\\src"
+    ]
+}

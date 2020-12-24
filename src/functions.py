@@ -95,7 +95,7 @@ def write_file(dictionary: dict):
     :param dictionary:
     :return: None
     """
-    with open('phonebook.txt', 'w') as writing_from_file:
+    with open('./phonebook.txt', 'w') as writing_from_file:
         name_list = []
         number_list = []
         for key, value in dictionary.items():
