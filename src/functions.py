@@ -9,10 +9,10 @@ def add_user(dictionary: dict):
     name = input('Enter name for abonent: ')
     phone = input('Enter phone number for abonent: ')
     if name in dictionary:
-        print('This abonent already exist: {} - {}'.format(name, dictionary[name]))
+        print('\n' + 'This abonent already exist: Name: {} - Phone: {}'.format(name, dictionary[name]) + '\n')
     else:
         dictionary[name] = phone
-        print('New abonent "{}" created'.format(name))
+        print('\n' + 'New abonent "{}" created'.format(name))
     return dictionary
 
 
@@ -25,9 +25,9 @@ def delete_user(dictionary: dict):
     name = input('Enter name for abonent: ')
     if name in dictionary:
         dictionary.pop(name)
-        print('Abonent "{}" deleted'.format(name))
+        print('\n' + 'Abonent "{}" deleted'.format(name))
     else:
-        print('Sorry, this abonent not exist')
+        print('\n' + 'Sorry, this abonent not exist')
     return dictionary
 
 
@@ -41,9 +41,9 @@ def update_user(dictionary: dict):
     phone = input('Enter New phone number for abonent: ')
     if name in dictionary:
         dictionary[name] = phone
-        print('Abonent "{}" updated'.format(name))
+        print('\n' + 'Abonent "{}" updated'.format(name) + '\n')
     else:
-        print('Sorry, this abonent not exist')
+        print('\n' + 'Sorry, this abonent not exist' + '\n')
     return dictionary
 
 
@@ -57,10 +57,10 @@ def search_user(dictionary: dict):
     name_in_dict = False
     for key, value in dictionary.items():
         if key.lower() == search_value.lower() or value == search_value:
-            print(key, ' - ', value)
+            print('\n' + 'Name: "{}" - Number: "{}"'. format(key, value))
             name_in_dict = True
     if name_in_dict == False:
-        print('Sorry, this abonent not exist')
+        print('\n' + 'Sorry, this abonent not exist')
 
 
 def print_phonebook(dictionary: dict):
@@ -70,7 +70,7 @@ def print_phonebook(dictionary: dict):
     :return: None
     """
     for key, value in dictionary.items():
-        print(key, ' - ', value)
+        print('Name: "{}" - Number: "{}"'. format (key, value))
 
 
 def read_file():
