@@ -1,5 +1,10 @@
+from colorama import init
+from colorama import Fore, Back, Style
 import os
 import csv
+
+# use Colorama to make Termcolor work on Windows too
+init()
 
 def add_user(dictionary: dict):
     """
@@ -7,13 +12,17 @@ def add_user(dictionary: dict):
     :param dictionary:
     :return:dictionary
     """
+    print(Fore.BLACK)  # use Colorama
+    print(Back.YELLOW)  # use Colorama
     name = input('Enter name for abonent: ')
     phone = input('Enter phone number for abonent: ')
     if name in dictionary:
-        print('\n' + 'This abonent already exist: Name: {} - Phone: {}'.format(name, dictionary[name]) + '\n')
+        print(Fore.BLACK)  # use Colorama
+        print(Back.GREEN)  # use Colorama
+        print('This abonent already exist: Name: {} - Phone: {}'.format(name, dictionary[name]))
     else:
         dictionary[name] = phone
-        print('\n' + 'New abonent "{}" created'.format(name))
+        print('New abonent "{}" is created'.format(name))
     return dictionary
 
 
@@ -23,12 +32,16 @@ def delete_user(dictionary: dict):
     :param dictionary:
     :return: dictionary
     """
+    print(Fore.BLACK)  # use Colorama
+    print(Back.YELLOW)  # use Colorama
     name = input('Enter name for abonent: ')
     if name in dictionary:
         dictionary.pop(name)
-        print('\n' + 'Abonent "{}" deleted'.format(name))
+        print(Fore.BLACK)  # use Colorama
+        print(Back.RED)  # use Colorama
+        print('Abonent "{}" is deleted'.format(name))
     else:
-        print('\n' + 'Sorry, this abonent not exist')
+        print('Sorry, this abonent not exist')
     return dictionary
 
 
@@ -42,9 +55,11 @@ def update_user(dictionary: dict):
     phone = input('Enter New phone number for abonent: ')
     if name in dictionary:
         dictionary[name] = phone
-        print('\n' + 'Abonent "{}" updated'.format(name) + '\n')
+        print(Fore.BLACK)  # use Colorama
+        print(Back.GREEN)  # use Colorama
+        print('Abonent "{}" is updated'.format(name))
     else:
-        print('\n' + 'Sorry, this abonent not exist' + '\n')
+        print('Sorry, this abonent not exist')
     return dictionary
 
 
@@ -54,14 +69,18 @@ def search_user(dictionary: dict):
     :param dictionary:
     :return: dictionary
     """
+    print(Fore.BLACK)  # use Colorama
+    print(Back.YELLOW)  # use Colorama
     search_value = input('Enter name or phone number for abonent: ')
     name_in_dict = False
     for key, value in dictionary.items():
         if key.lower() == search_value.lower() or value == search_value:
-            print('\n' + 'Name: "{}" - Number: "{}"'. format(key, value))
+            print(Back.YELLOW)  # use Colorama
+            print(Fore.BLACK)  # use Colorama  
+            print('Name: "{}" - Number: "{}"'. format(key, value))
             name_in_dict = True
     if name_in_dict == False:
-        print('\n' + 'Sorry, this abonent not exist')
+        print('Sorry, this abonent not exist')
 
 
 def print_phonebook(dictionary: dict):
@@ -70,8 +89,10 @@ def print_phonebook(dictionary: dict):
     :param dictionary:
     :return: None
     """
+    print(Back.GREEN)  # use Colorama
+    print(Fore.BLACK)  # use Colorama
     for key, value in dictionary.items():
-        print('Name: "{}" - Number: "{}"'. format (key, value))
+        print('Phonebook Numbers: ' + '\n' + 'Name: "{}" - Number: "{}"'. format(key, value))
 
 
 def read_file():
