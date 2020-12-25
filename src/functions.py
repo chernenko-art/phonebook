@@ -1,4 +1,5 @@
 import os
+import csv
 
 def add_user(dictionary: dict):
     """
@@ -75,31 +76,31 @@ def print_phonebook(dictionary: dict):
 
 def read_file():
     """
-    read from file phonebook.txt
+    read from file phonebook.csv
     :return: phonebook
     """
-    check_file = os.path.exists('phonebook.txt')
+    check_file = os.path.exists('./phonebook.csv')
     if check_file is True:
-        with open('phonebook.txt', 'r') as phonebook_from_file:  # load phonebook from file
-            lines = phonebook_from_file.readlines()
-            lines_list = [line for line in lines] 
-            name_list, phone_list = lines_list
-            return dict(zip(name_list.split(), phone_list.split()))
+        # load phonebook from file phonebook.csv
+        with open('./phonebook.csv') as file:
+            phonebook_from_file = csv.reader(file, delimiter = ",")
+            phonebook = {}
+            for abonent in phonebook_from_file:
+                if len(abonent) > 0:  # excludes access to an empty string
+                    phonebook[abonent[0]] = abonent[1]              
+        return phonebook
     else:
         return dict()
 
 
 def write_file(dictionary: dict):
     """
-    write in file phonebook.txt
+    write in file phonebook.csv
     :param dictionary:
     :return: None
     """
-    with open('./phonebook.txt', 'w') as writing_from_file:
-        name_list = []
-        number_list = []
-        for key, value in dictionary.items():
-            name_list.append(key)
-            number_list.append(value)
-        print(' '.join(name_list), file=writing_from_file)
-        print(' '.join(number_list), file=writing_from_file)
+    with open('./phonebook.csv', 'w') as file:
+        writing_file = csv.writer(file)
+        for name, number in dictionary.items():
+            writing_file.writerow([name, number])
+        
